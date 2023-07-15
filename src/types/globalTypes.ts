@@ -7,3 +7,15 @@ export interface IBook {
   imgUrl: string;
   reviews: [];
 }
+
+export interface IResponse {
+  data: IBook[];
+  message: string;
+  meta: {
+    page: number;
+    limit: number;
+    total: number;
+  };
+  statusCode: number;
+  success: boolean;
+}
