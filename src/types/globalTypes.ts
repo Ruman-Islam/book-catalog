@@ -8,7 +8,7 @@ export interface IBook {
   reviews: [];
 }
 
-export interface IResponse {
+export interface IBookResponse {
   data: IBook[];
   message: string;
   meta: {
@@ -18,4 +18,14 @@ export interface IResponse {
   };
   statusCode: number;
   success: boolean;
+}
+
+export interface IErrorResponse {
+  data: {
+    errorMessages: [];
+    message: string;
+    stack?: string;
+    success: boolean;
+  };
+  status: number;
 }

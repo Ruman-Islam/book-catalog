@@ -15,7 +15,7 @@ const Home = () => {
       <div className="container px-5 py-24 mx-auto">
         <div className="flex flex-wrap -m-4">
           {data?.data?.map((book: IBook) => {
-            return <ProductCard book={book} />;
+            return <ProductCard key={book._id} book={book} />;
           })}
         </div>
       </div>
