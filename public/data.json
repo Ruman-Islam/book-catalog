@@ -1,161 +1,181 @@
 [{
-        "id": "1",
         "title": "The Great Gatsby",
         "author": "F. Scott Fitzgerald",
         "genre": "Classic",
         "publicationDate": "April 10, 1925",
-        "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250"
+        "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250",
+        "reviews": [],
+        "rating": 3
     },
     {
-        "id": "2",
         "title": "To Kill a Mockingbird",
         "author": "Harper Lee",
         "genre": "Fiction",
         "publicationDate": "July 11, 1960",
-        "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250"
+        "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250",
+        "reviews": [],
+        "rating": 3
     },
     {
-        "id": "3",
         "title": "1984",
         "author": "George Orwell",
         "genre": "Dystopian",
         "publicationDate": "June 8, 1949",
-        "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250"
+        "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250",
+        "reviews": [],
+        "rating": 3
     },
     {
-        "id": "4",
         "title": "Pride and Prejudice",
         "author": "Jane Austen",
         "genre": "Romance",
         "publicationDate": "January 28, 1813",
-        "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250"
+        "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250",
+        "reviews": [],
+        "rating": 3
     },
     {
-        "id": "5",
         "title": "The Lord of the Rings",
         "author": "J.R.R. Tolkien",
         "genre": "Fantasy",
         "publicationDate": "July 29, 1954",
-        "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250"
+        "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250",
+        "reviews": [],
+        "rating": 3
     },
     {
-        "id": "6",
         "title": "Harry Potter and the Philosopher's Stone",
         "author": "J.K. Rowling",
         "genre": "Fantasy",
         "publicationDate": "June 26, 1997",
-        "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250"
+        "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250",
+        "reviews": [],
+        "rating": 3
     },
     {
-        "id": "7",
         "title": "The Catcher in the Rye",
         "author": "J.D. Salinger",
         "genre": "Coming-of-age",
         "publicationDate": "July 16, 1951",
-        "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250"
+        "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250",
+        "reviews": [],
+        "rating": 3
     },
     {
-        "id": "8",
         "title": "Moby-Dick",
         "author": "Herman Melville",
         "genre": "Adventure",
         "publicationDate": "October 18, 1851",
-        "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250"
+        "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250",
+        "reviews": [],
+        "rating": 3
     },
     {
-        "id": "9",
         "title": "The Hobbit",
         "author": "J.R.R. Tolkien",
         "genre": "Fantasy",
         "publicationDate": "September 21, 1937",
-        "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250"
+        "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250",
+        "reviews": [],
+        "rating": 3
     },
     {
-        "id": "10",
         "title": "To the Lighthouse",
         "author": "Virginia Woolf",
         "genre": "Modernist",
         "publicationDate": "May 5, 1927",
-        "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250"
+        "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250",
+        "reviews": [],
+        "rating": 3
     },
     {
-        "id": "11",
         "title": "The Odyssey",
         "author": "Homer",
         "genre": "Epic",
         "publicationDate": "8th century BC",
-        "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250"
+        "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250",
+        "reviews": [],
+        "rating": 3
     },
     {
-        "id": "12",
         "title": "Brave New World",
         "author": "Aldous Huxley",
         "genre": "Dystopian",
         "publicationDate": "October 27, 1931",
-        "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250"
+        "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250",
+        "reviews": [],
+        "rating": 3
     },
     {
-        "id": "13",
         "title": "Frankenstein",
         "author": "Mary Shelley",
         "genre": "Gothic",
         "publicationDate": "January 1, 1818",
-        "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250"
+        "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250",
+        "reviews": [],
+        "rating": 3
     },
     {
-        "id": "14",
         "title": "The Adventures of Huckleberry Finn",
         "author": "Mark Twain",
         "genre": "Adventure",
         "publicationDate": "December 10, 1884",
-        "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250"
+        "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250",
+        "reviews": [],
+        "rating": 3
     },
     {
-        "id": "15",
         "title": "The Alchemist",
         "author": "Paulo Coelho",
         "genre": "Fiction",
         "publicationDate": "1988",
-        "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250"
+        "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250",
+        "reviews": [],
+        "rating": 3
     },
     {
-        "id": "16",
         "title": "The Picture of Dorian Gray",
         "author": "Oscar Wilde",
         "genre": "Gothic",
         "publicationDate": "June 20, 1890",
-        "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250"
+        "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250",
+        "reviews": [],
+        "rating": 3
     },
     {
-        "id": "17",
         "title": "One Hundred Years of Solitude",
         "author": "Gabriel Garcia Marquez",
         "genre": "Magic Realism",
         "publicationDate": "May 30, 1967",
-        "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250"
+        "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250",
+        "reviews": [],
+        "rating": 3
     },
     {
-        "id": "18",
         "title": "The Divine Comedy",
         "author": "Dante Alighieri",
         "genre": "Epic",
         "publicationDate": "1320",
-        "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250"
+        "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250",
+        "reviews": [],
+        "rating": 3
     },
     {
-        "id": "19",
         "title": "Crime and Punishment",
         "author": "Fyodor Dostoevsky",
         "genre": "Psychological Fiction",
         "publicationDate": "1866",
-        "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250"
+        "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250",
+        "reviews": [],
+        "rating": 3
     },
     {
-        "id": "20",
         "title": "The War of the Worlds",
         "author": "H.G. Wells",
         "genre": "Science Fiction",
         "publicationDate": "1898",
-        "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250"
+        "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250",
+        "reviews": [],
+        "rating": 3
     }
 ]

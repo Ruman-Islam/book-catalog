@@ -1,13 +1,5 @@
 import { useEffect, useState } from "react";
-
-interface IBook {
-  id: string;
-  title: string;
-  author: string;
-  genre: string;
-  publicationDate: string;
-  imgUrl: string;
-}
+import { IBook } from "../types/globalTypes";
 
 const Home = () => {
   const [books, setBooks] = useState([]);
@@ -29,7 +21,7 @@ const Home = () => {
         <div className="flex flex-wrap -m-4">
           {books.map((book: IBook) => {
             return (
-              <div key={book?.id} className="lg:w-1/4 md:w-1/2 p-4 w-full">
+              <div key={book?._id} className="lg:w-1/4 md:w-1/2 p-4 w-full">
                 <a className="block relative h-96 rounded overflow-hidden">
                   <img
                     alt="ecommerce"
