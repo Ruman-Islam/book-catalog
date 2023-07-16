@@ -8,10 +8,20 @@ import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "./redux/hook";
 import { setUser } from "./redux/features/user/userSlice";
 
-interface UserData {
-  name: string;
-  email: string;
-  id: string;
+interface IResponse {
+  data: {
+    createdAt: string;
+    updatedAt: string;
+    email: string;
+    name: string;
+    id: string;
+    _id: string;
+    __v: number;
+  };
+  message: string;
+  meta: null;
+  statusCode: number;
+  success: boolean;
 }
 
 function App() {
@@ -21,7 +31,7 @@ function App() {
 
   useEffect(() => {
     if (data) {
-      const userData = data?.data as UserData;
+      const { data: userData } = data as IResponse;
       dispatch(
         setUser({
           name: userData?.name,

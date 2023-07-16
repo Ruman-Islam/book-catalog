@@ -17,7 +17,7 @@ const bookApi = api.injectEndpoints({
         url: `/books/get-all-book?${url}`,
       }),
     }),
-    myBook: builder.query<IBookResponse[], string>({
+    myBook: builder.query<IBookResponse, string>({
       query: (url) => ({
         url: `/books/my-book?${url}`,
       }),

@@ -2,8 +2,48 @@ import { FormEvent, useState, useEffect } from "react";
 import { useAddBookMutation } from "../redux/features/books/bookApi";
 import { toast } from "react-toastify";
 
+interface IBookForm {
+  title: string;
+  author: string;
+  genre: string;
+  publicationDate: string;
+  publicationYear: string;
+  imgUrl: File | string;
+}
+
+interface ImageData {
+  delete_url: string;
+  display_url: string;
+  expiration: number;
+  height: number;
+  id: string;
+  image: ImageInfo;
+  medium: ImageInfo;
+  size: number;
+  thumb: ImageInfo;
+  time: number;
+  title: string;
+  url: string;
+  url_viewer: string;
+  width: number;
+}
+
+interface ImageInfo {
+  filename: string;
+  name: string;
+  mime: string;
+  extension: string;
+  url: string;
+}
+
+interface IImageBB {
+  data: ImageData;
+  status: 200;
+  success: boolean;
+}
+
 const AddBook = () => {
-  const [form, setForm] = useState({
+  const [form, setForm] = useState<IBookForm>({
     title: "",
     author: "",
     genre: "",
@@ -20,6 +60,14 @@ const AddBook = () => {
     publicationYear: "",
     imgUrl: "",
   });
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files) return;
+    setForm({
+      ...form,
+      imgUrl: e.target.files[0],
+    });
+  };
 
   const [addBook, { data, isLoading, isError, isSuccess, error }] =
     useAddBookMutation();
@@ -88,7 +136,7 @@ const AddBook = () => {
       }
     );
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    const imageData = await response.json();
+    const imageData: IImageBB = await response.json();
 
     const date = new Date(form.publicationDate).toDateString().split(" ");
 
@@ -98,8 +146,7 @@ const AddBook = () => {
       genre: form.genre,
       publicationDate: `${date[0]} ${date[1]} ${date[2]}`,
       publicationYear: date[3],
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-      imgUrl: imageData?.data?.url,
+      imgUrl: imageData.data.url,
     };
 
     void addBook(uploadForm);
@@ -203,9 +250,7 @@ const AddBook = () => {
           </div>
           <div className="relative mb-4">
             <input
-              onChange={(e) =>
-                setForm({ ...form, imgUrl: e?.target?.files[0] })
-              }
+              onChange={handleFileChange}
               type="file"
               id="img"
               name="img"

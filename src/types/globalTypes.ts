@@ -1,12 +1,17 @@
 export interface IBook {
   _id: string;
+  id: string;
   title: string;
   author: string;
   genre: string;
   publicationDate: string;
   publicationYear: string;
   imgUrl: string;
+  email: string;
   reviews: [];
+  __v: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface IBookResponse {

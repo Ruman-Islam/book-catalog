@@ -1,7 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { useState } from "react";
 import { useMyBookQuery } from "../redux/features/books/bookApi";
 import Spinner from "../components/common/Spinner";
@@ -46,25 +42,29 @@ const MyBook = () => {
     pollingInterval: 500,
   });
 
-  const genre = filterData?.data
-    ?.filter((item, index, array) => {
-      // Check if the current item's genre is unique in the array
-      return (
-        array.findIndex((element) => element.genre === item.genre) === index
-      );
-    })
-    .sort((a, b) => a.genre.localeCompare(b.genre));
+  let genre: IBook[] = [];
+  if (filterData) {
+    genre = filterData.data
+      .filter((item, index, array) => {
+        return (
+          array.findIndex((element) => element.genre === item.genre) === index
+        );
+      })
+      .sort((a, b) => a.genre.localeCompare(b.genre));
+  }
 
-  const year = filterData?.data
-    ?.filter((item, index, array) => {
-      // Check if the current item's publicationYear is unique in the array
-      return (
-        array.findIndex(
-          (element) => element.publicationYear === item.publicationYear
-        ) === index
-      );
-    })
-    .sort((a, b) => b.publicationYear.localeCompare(a.publicationYear));
+  let year: IBook[] = [];
+  if (filterData) {
+    year = filterData.data
+      .filter((item, index, array) => {
+        return (
+          array.findIndex(
+            (element) => element.publicationYear === item.publicationYear
+          ) === index
+        );
+      })
+      .sort((a, b) => b.publicationYear.localeCompare(a.publicationYear));
+  }
 
   if (isLoading) {
     return <Spinner />;
