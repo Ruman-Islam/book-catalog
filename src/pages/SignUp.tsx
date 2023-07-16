@@ -13,12 +13,14 @@ const SignUp = () => {
   const navigate = useNavigate();
 
   const [user, setUser] = useState({
+    name: "",
     email: "",
     password: "",
     confirmPassword: "",
   });
 
   const [errorMessage, setError] = useState({
+    name: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -30,6 +32,10 @@ const SignUp = () => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    if (user.name === "") {
+      setError({ ...errorMessage, name: "Name is required" });
+      return;
+    }
     if (user.email === "") {
       setError({ ...errorMessage, email: "Email is required" });
       return;
@@ -54,7 +60,7 @@ const SignUp = () => {
       return;
     }
 
-    setError({ email: "", password: "", confirmPassword: "" });
+    setError({ name: "", email: "", password: "", confirmPassword: "" });
     void register(user);
   };
 
@@ -73,7 +79,7 @@ const SignUp = () => {
       });
 
       // save token to local storage
-      saveLocalStorage("x-auth-token", data?.data?.accessToken);
+      saveLocalStorage("x-auth-token", data?.data?.accessToken as string);
     }
 
     if (isError) {
@@ -109,6 +115,19 @@ const SignUp = () => {
               src="https://s3.amazonaws.com/lowres.cartoonstock.com/health-beauty-aladdin-3_wishes-wishes-genies-djinns-ksmn4306_low.jpg"
               alt=""
             />
+          </div>
+          <div className="relative mb-4">
+            <label htmlFor="name" className="leading-7 text-sm text-gray-600">
+              Name
+            </label>
+            <input
+              onChange={(e) => setUser({ ...user, name: e.target.value })}
+              type="text"
+              id="name"
+              name="name"
+              className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+            />
+            <p className="text-red-600">{errorMessage.name}</p>
           </div>
           <div className="relative mb-4">
             <label htmlFor="email" className="leading-7 text-sm text-gray-600">
