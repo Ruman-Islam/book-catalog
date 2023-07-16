@@ -37,8 +37,14 @@ const MyBook = () => {
 
   const url = constructUrl();
 
-  const { data, isLoading } = useMyBookQuery(url);
-  const { data: filterData } = useMyBookQuery("");
+  const { data, isLoading } = useMyBookQuery(url, {
+    refetchOnMountOrArgChange: true,
+    pollingInterval: 500,
+  });
+  const { data: filterData } = useMyBookQuery("", {
+    refetchOnMountOrArgChange: true,
+    pollingInterval: 500,
+  });
 
   const genre = filterData?.data
     ?.filter((item, index, array) => {

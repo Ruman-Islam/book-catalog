@@ -107,7 +107,7 @@ const AddBook = () => {
 
   useEffect(() => {
     if (isSuccess && !isLoading) {
-      toast.success("You have signed in successfully", {
+      toast.success("Book added successfully", {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
