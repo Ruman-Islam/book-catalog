@@ -3,8 +3,10 @@ import { api } from "../../api/apiSlice";
 
 const bookApi = api.injectEndpoints({
   endpoints: (builder) => ({
-    getAllBook: builder.query<IBookResponse, undefined>({
-      query: () => ({ url: "/books/get-all-book" }),
+    getAllBook: builder.query<IBookResponse, string>({
+      query: (url) => ({
+        url: `/books/get-all-book?${url}`,
+      }),
     }),
   }),
 });
