@@ -46,11 +46,9 @@ const SignUp = () => {
     }
     if (user.email !== "" && errorMessage.email !== "") {
       setError({ ...errorMessage, email: "" });
-      return;
     }
     if (user.password !== "" && errorMessage.password !== "") {
       setError({ ...errorMessage, password: "" });
-      return;
     }
     if (user.password !== user.confirmPassword) {
       setError({

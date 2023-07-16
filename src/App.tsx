@@ -5,15 +5,12 @@ import Layout from "./layout/Layout";
 import { useGetLoggedInUserQuery } from "./redux/features/user/userApi";
 import Spinner from "./components/common/Spinner";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch} from "./redux/hook";
+import { useAppDispatch } from "./redux/hook";
 import { setUser } from "./redux/features/user/userSlice";
 
 interface UserData {
-  createdAt: string;
-  updatedAt: string;
-  __v: number;
+  name: string;
   email: string;
-  _id: string;
   id: string;
 }
 
@@ -25,7 +22,13 @@ function App() {
   useEffect(() => {
     if (data) {
       const userData = data?.data as UserData;
-      dispatch(setUser({ email: userData?.email, id: userData?.id }));
+      dispatch(
+        setUser({
+          name: userData?.name,
+          email: userData?.email,
+          id: userData?.id,
+        })
+      );
     }
     if (isError) {
       navigate("/");

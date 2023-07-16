@@ -8,18 +8,30 @@ interface IRegistrationResponse {
   success: boolean;
 }
 
-interface IRegistrationUser {
+interface IRegistrationUserData {
   name: string;
   email: string;
   password: string;
   confirmPassword: string;
 }
 
+interface ILoginUserData {
+  email: string;
+  password: string;
+}
+
 const bookApi = api.injectEndpoints({
   endpoints: (builder) => ({
-    register: builder.mutation<IRegistrationResponse, IRegistrationUser>({
+    register: builder.mutation<IRegistrationResponse, IRegistrationUserData>({
       query: (data) => ({
         url: "/users/register",
+        method: "POST",
+        body: data,
+      }),
+    }),
+    login: builder.mutation<IRegistrationResponse, ILoginUserData>({
+      query: (data) => ({
+        url: "/users/login",
         method: "POST",
         body: data,
       }),
@@ -30,4 +42,8 @@ const bookApi = api.injectEndpoints({
   }),
 });
 
-export const { useRegisterMutation, useGetLoggedInUserQuery } = bookApi;
+export const {
+  useRegisterMutation,
+  useGetLoggedInUserQuery,
+  useLoginMutation,
+} = bookApi;

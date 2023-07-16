@@ -1,6 +1,15 @@
 import { IBookResponse } from "../../../types/globalTypes";
 import { api } from "../../api/apiSlice";
 
+interface uploadForm {
+  title: string;
+  author: string;
+  genre: string;
+  publicationDate: string;
+  publicationYear: string;
+  imgUrl: string;
+}
+
 const bookApi = api.injectEndpoints({
   endpoints: (builder) => ({
     getAllBook: builder.query<IBookResponse, string>({
@@ -8,7 +17,20 @@ const bookApi = api.injectEndpoints({
         url: `/books/get-all-book?${url}`,
       }),
     }),
+    myBook: builder.query<IBookResponse[], string>({
+      query: (url) => ({
+        url: `/books/my-book?${url}`,
+      }),
+    }),
+    addBook: builder.mutation<IBookResponse, uploadForm>({
+      query: (data) => ({
+        url: "/books/add-book",
+        method: "POST",
+        body: data,
+      }),
+    }),
   }),
 });
 
-export const { useGetAllBookQuery } = bookApi;
+export const { useGetAllBookQuery, useMyBookQuery, useAddBookMutation } =
+  bookApi;
