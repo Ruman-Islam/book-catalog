@@ -24,9 +24,14 @@ const Navbar = () => {
           <Link to="/all-books">
             <span className="mr-5 hover:text-white">All Book</span>
           </Link>
-          <a className="mr-5 hover:text-white">Second Link</a>
-          <a className="mr-5 hover:text-white">Third Link</a>
-          <a className="mr-5 hover:text-white">Fourth Link</a>
+          <Link to="/my-books">
+            <span className="mr-5 hover:text-white">My Book</span>
+          </Link>
+          {email && (
+            <Link to="/add-book">
+              <span className="mr-5 hover:text-white">Add Book</span>
+            </Link>
+          )}
         </nav>
         {email ? (
           <button
