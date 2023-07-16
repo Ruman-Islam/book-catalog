@@ -8,16 +8,25 @@ const AllBooks = () => {
   const [searchQuery, setSearchQuery] = useState({
     queryString: "",
     genre: "",
+    year: "",
   });
 
   const constructUrl = () => {
     let url = "";
-    if (searchQuery.genre && searchQuery.queryString) {
+    if (searchQuery.genre && searchQuery.queryString && searchQuery.year) {
+      url = `genre=${searchQuery.genre}&searchTerm=${searchQuery.queryString}&publicationYear=${searchQuery.year}`;
+    } else if (searchQuery.genre && searchQuery.queryString) {
       url = `genre=${searchQuery.genre}&searchTerm=${searchQuery.queryString}`;
+    } else if (searchQuery.genre && searchQuery.year) {
+      url = `genre=${searchQuery.genre}&publicationYear=${searchQuery.year}`;
+    } else if (searchQuery.queryString && searchQuery.year) {
+      url = `searchTerm=${searchQuery.queryString}&publicationYear=${searchQuery.year}`;
     } else if (searchQuery.genre) {
       url = `genre=${searchQuery.genre}`;
     } else if (searchQuery.queryString) {
       url = `searchTerm=${searchQuery.queryString}`;
+    } else if (searchQuery.year) {
+      url = `publicationYear=${searchQuery.year}`;
     }
     return url;
   };
@@ -25,6 +34,27 @@ const AllBooks = () => {
   const url = constructUrl();
 
   const { data, isLoading } = useGetAllBookQuery(url);
+  const { data: filterData } = useGetAllBookQuery("");
+
+  const genre = filterData?.data
+    ?.filter((item, index, array) => {
+      // Check if the current item's genre is unique in the array
+      return (
+        array.findIndex((element) => element.genre === item.genre) === index
+      );
+    })
+    .sort((a, b) => a.genre.localeCompare(b.genre));
+
+  const year = filterData?.data
+    ?.filter((item, index, array) => {
+      // Check if the current item's publicationYear is unique in the array
+      return (
+        array.findIndex(
+          (element) => element.publicationYear === item.publicationYear
+        ) === index
+      );
+    })
+    .sort((a, b) => b.publicationYear.localeCompare(a.publicationYear));
 
   if (isLoading) {
     return <Spinner />;
@@ -59,12 +89,53 @@ const AllBooks = () => {
                       genre: e.target.value,
                     })
                   }
-                  defaultValue="Select a genre"
+                  defaultValue="Genre"
                   className="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base pl-3 pr-10"
                 >
-                  <option value="">Select a genre</option>
-                  <option value="Classic">Classic</option>
-                  <option value="Fantasy">Fantasy</option>
+                  <option value="">Genre</option>
+                  {genre?.map((book: IBook) => {
+                    return (
+                      <option key={book._id} value={book.genre}>
+                        {book.genre}
+                      </option>
+                    );
+                  })}
+                </select>
+                <span className="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
+                  <svg
+                    fill="none"
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    className="w-4 h-4"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M6 9l6 6 6-6"></path>
+                  </svg>
+                </span>
+              </div>
+            </div>
+            <div className="flex items-center">
+              <div className="relative">
+                <select
+                  onChange={(e) =>
+                    setSearchQuery({
+                      ...searchQuery,
+                      year: e.target.value,
+                    })
+                  }
+                  defaultValue="Year"
+                  className="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base pl-3 pr-10"
+                >
+                  <option value="">Year</option>
+                  {year?.map((book: IBook) => {
+                    return (
+                      <option key={book._id} value={book.publicationYear}>
+                        {book.publicationYear}
+                      </option>
+                    );
+                  })}
                 </select>
                 <span className="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
                   <svg

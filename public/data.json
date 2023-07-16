@@ -1,8 +1,10 @@
-[{
+[
+    {
         "title": "The Great Gatsby",
         "author": "F. Scott Fitzgerald",
         "genre": "Classic",
         "publicationDate": "April 10, 1925",
+        "publicationYear": "1925",
         "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250",
         "reviews": [],
         "rating": 3
@@ -12,6 +14,7 @@
         "author": "Harper Lee",
         "genre": "Fiction",
         "publicationDate": "July 11, 1960",
+        "publicationYear": "1960",
         "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250",
         "reviews": [],
         "rating": 3
@@ -21,6 +24,7 @@
         "author": "George Orwell",
         "genre": "Dystopian",
         "publicationDate": "June 8, 1949",
+        "publicationYear": "1949",
         "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250",
         "reviews": [],
         "rating": 3
@@ -30,6 +34,7 @@
         "author": "Jane Austen",
         "genre": "Romance",
         "publicationDate": "January 28, 1813",
+        "publicationYear": "1813",
         "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250",
         "reviews": [],
         "rating": 3
@@ -39,6 +44,7 @@
         "author": "J.R.R. Tolkien",
         "genre": "Fantasy",
         "publicationDate": "July 29, 1954",
+        "publicationYear": "1954",
         "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250",
         "reviews": [],
         "rating": 3
@@ -48,6 +54,7 @@
         "author": "J.K. Rowling",
         "genre": "Fantasy",
         "publicationDate": "June 26, 1997",
+        "publicationYear": "1997",
         "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250",
         "reviews": [],
         "rating": 3
@@ -57,6 +64,7 @@
         "author": "J.D. Salinger",
         "genre": "Coming-of-age",
         "publicationDate": "July 16, 1951",
+        "publicationYear": "1951",
         "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250",
         "reviews": [],
         "rating": 3
@@ -66,6 +74,7 @@
         "author": "Herman Melville",
         "genre": "Adventure",
         "publicationDate": "October 18, 1851",
+        "publicationYear": "1851",
         "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250",
         "reviews": [],
         "rating": 3
@@ -75,6 +84,7 @@
         "author": "J.R.R. Tolkien",
         "genre": "Fantasy",
         "publicationDate": "September 21, 1937",
+        "publicationYear": "1937",
         "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250",
         "reviews": [],
         "rating": 3
@@ -84,6 +94,7 @@
         "author": "Virginia Woolf",
         "genre": "Modernist",
         "publicationDate": "May 5, 1927",
+        "publicationYear": "1927",
         "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250",
         "reviews": [],
         "rating": 3
@@ -92,7 +103,8 @@
         "title": "The Odyssey",
         "author": "Homer",
         "genre": "Epic",
-        "publicationDate": "8th century BC",
+        "publicationDate": "May 5, 1927",
+        "publicationYear": "1927",
         "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250",
         "reviews": [],
         "rating": 3
@@ -102,6 +114,7 @@
         "author": "Aldous Huxley",
         "genre": "Dystopian",
         "publicationDate": "October 27, 1931",
+        "publicationYear": "1931",
         "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250",
         "reviews": [],
         "rating": 3
@@ -111,6 +124,7 @@
         "author": "Mary Shelley",
         "genre": "Gothic",
         "publicationDate": "January 1, 1818",
+        "publicationYear": "1818",
         "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250",
         "reviews": [],
         "rating": 3
@@ -120,6 +134,7 @@
         "author": "Mark Twain",
         "genre": "Adventure",
         "publicationDate": "December 10, 1884",
+        "publicationYear": "1884",
         "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250",
         "reviews": [],
         "rating": 3
@@ -129,6 +144,7 @@
         "author": "Paulo Coelho",
         "genre": "Fiction",
         "publicationDate": "1988",
+        "publicationYear": "1988",
         "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250",
         "reviews": [],
         "rating": 3
@@ -138,6 +154,7 @@
         "author": "Oscar Wilde",
         "genre": "Gothic",
         "publicationDate": "June 20, 1890",
+        "publicationYear": "1890",
         "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250",
         "reviews": [],
         "rating": 3
@@ -147,6 +164,7 @@
         "author": "Gabriel Garcia Marquez",
         "genre": "Magic Realism",
         "publicationDate": "May 30, 1967",
+        "publicationYear": "1967",
         "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250",
         "reviews": [],
         "rating": 3
@@ -156,6 +174,7 @@
         "author": "Dante Alighieri",
         "genre": "Epic",
         "publicationDate": "1320",
+        "publicationYear": "1320",
         "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250",
         "reviews": [],
         "rating": 3
@@ -165,6 +184,7 @@
         "author": "Fyodor Dostoevsky",
         "genre": "Psychological Fiction",
         "publicationDate": "1866",
+        "publicationYear": "1866",
         "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250",
         "reviews": [],
         "rating": 3
@@ -174,6 +194,7 @@
         "author": "H.G. Wells",
         "genre": "Science Fiction",
         "publicationDate": "1898",
+        "publicationYear": "1898",
         "imgUrl": "https://www.hachette.co.uk/wp-content/uploads/2022/09/hbg-title-9781472276087-41.jpg?fit=813%2C1250",
         "reviews": [],
         "rating": 3
