@@ -26,6 +26,18 @@ export interface IBookResponse {
   success: boolean;
 }
 
+export interface ISingleBookResponse {
+  data: IBook;
+  message: string;
+  meta: {
+    page: number;
+    limit: number;
+    total: number;
+  };
+  statusCode: number;
+  success: boolean;
+}
+
 export interface IErrorResponse {
   data: {
     errorMessages: [];

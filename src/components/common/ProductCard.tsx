@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { IBook } from "../../types/globalTypes";
 import Swal from "sweetalert2";
 import { useDeleteBookMutation } from "../../redux/features/books/bookApi";
@@ -22,6 +22,7 @@ const ProductCard = ({ book }: ProductCardProps) => {
   } = book;
 
   const { pathname } = useLocation();
+  const navigate = useNavigate();
 
   const [deleteBook, { data, isLoading, isError, isSuccess, error }] =
     useDeleteBookMutation();
@@ -83,7 +84,10 @@ const ProductCard = ({ book }: ProductCardProps) => {
       </a>
       {pathname.includes("/my-books") ? (
         <div className="mt-4 flex justify-between gap-x-2">
-          <button className="text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg flex-1">
+          <button
+            onClick={() => navigate(`/edit-book/${_id}`)}
+            className="text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg flex-1"
+          >
             Edit
           </button>
           <button

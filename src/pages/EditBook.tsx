@@ -1,7 +1,11 @@
-import { FormEvent, useState, useEffect } from "react";
-import { useAddBookMutation } from "../redux/features/books/bookApi";
+import { FormEvent, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import {
+  useGetSingleBookQuery,
+  useUpdateBookMutation,
+} from "../redux/features/books/bookApi";
+import Spinner from "../components/common/Spinner";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
 
 interface IBookForm {
   title: string;
@@ -43,7 +47,17 @@ interface IImageBB {
   success: boolean;
 }
 
-const AddBook = () => {
+const convertDate = (date: string): string => {
+  const dateObj = new Date(date);
+  const year = dateObj.getFullYear();
+  const month = String(dateObj.getMonth() + 1).padStart(2, "0");
+  const day = String(dateObj.getDate()).padStart(2, "0");
+
+  return `${year}-${month}-${day}`;
+};
+
+const EditBook = () => {
+  const { id } = useParams();
   const [form, setForm] = useState<IBookForm>({
     title: "",
     author: "",
@@ -72,8 +86,13 @@ const AddBook = () => {
     });
   };
 
-  const [addBook, { data, isLoading, isError, isSuccess, error }] =
-    useAddBookMutation();
+  const { data, isLoading } = useGetSingleBookQuery(id as string, {
+    refetchOnMountOrArgChange: true,
+  });
+  const [
+    updateBook,
+    { isLoading: updatingLoading, isError, isSuccess, error },
+  ] = useUpdateBookMutation();
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -152,12 +171,31 @@ const AddBook = () => {
       imgUrl: imageData.data.url,
     };
 
-    void addBook(uploadForm);
+    void updateBook({
+      id: id as string,
+      data: uploadForm,
+    });
   };
 
   useEffect(() => {
-    if (isSuccess && !isLoading) {
-      toast.success("Book added successfully", {
+    if (data) {
+      setForm({
+        ...form,
+        title: data?.data?.title,
+        author: data?.data?.author,
+        genre: data?.data?.genre,
+        publicationDate: convertDate(
+          data?.data?.publicationDate + " " + data?.data?.publicationYear
+        ),
+        imgUrl: data?.data?.imgUrl,
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data]);
+
+  useEffect(() => {
+    if (isSuccess && !updatingLoading) {
+      toast.success("Book updated successfully", {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -182,7 +220,11 @@ const AddBook = () => {
         theme: "light",
       });
     }
-  }, [data, error, isError, isLoading, isSuccess, navigate]);
+  }, [data, error, isError, isSuccess, navigate, updatingLoading]);
+
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <section className="text-gray-600 body-font">
@@ -193,7 +235,7 @@ const AddBook = () => {
           className="max-w-[600px] mx-auto w-full bg-gray-100 rounded-lg p-8 flex flex-col mt-10 md:mt-0"
         >
           <h2 className="text-gray-900 text-lg font-medium title-font mb-5">
-            Add Your Book
+            Edit Your Book
           </h2>
           <div className="relative mb-4">
             <label htmlFor="title" className="leading-7 text-sm text-gray-600">
@@ -204,6 +246,7 @@ const AddBook = () => {
               type="text"
               id="title"
               name="title"
+              defaultValue={form.title}
               className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
             />
             <p className="text-red-600">{errorMessage.title}</p>
@@ -217,6 +260,7 @@ const AddBook = () => {
               type="text"
               id="author"
               name="author"
+              defaultValue={form.author}
               className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
             />
             <p className="text-red-600">{errorMessage.author}</p>
@@ -230,6 +274,7 @@ const AddBook = () => {
               type="text"
               id="genre"
               name="genre"
+              defaultValue={form.genre}
               className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
             />
             <p className="text-red-600">{errorMessage.genre}</p>
@@ -248,6 +293,7 @@ const AddBook = () => {
               type="date"
               id="publication-date"
               name="publication-date"
+              defaultValue={form.publicationDate}
               className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
             />
             <p className="text-red-600">{errorMessage.publicationDate}</p>
@@ -263,7 +309,7 @@ const AddBook = () => {
             <p className="text-red-600">{errorMessage.imgUrl}</p>
           </div>
 
-          {isLoading ? (
+          {updatingLoading ? (
             <div
               className="inline-block mx-auto h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
               role="status"
@@ -282,4 +328,4 @@ const AddBook = () => {
   );
 };
 
-export default AddBook;
+export default EditBook;

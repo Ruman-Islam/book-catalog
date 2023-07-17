@@ -1,4 +1,4 @@
-import { IBookResponse } from "../../../types/globalTypes";
+import { IBookResponse, ISingleBookResponse } from "../../../types/globalTypes";
 import { api } from "../../api/apiSlice";
 
 interface uploadForm {
@@ -8,6 +8,11 @@ interface uploadForm {
   publicationDate: string;
   publicationYear: string;
   imgUrl: string;
+}
+
+interface updateForm {
+  id: string;
+  data: uploadForm;
 }
 
 const bookApi = api.injectEndpoints({
@@ -36,6 +41,18 @@ const bookApi = api.injectEndpoints({
       }),
       invalidatesTags: ["delete-book"],
     }),
+    getSingleBook: builder.query<ISingleBookResponse, string>({
+      query: (id) => ({
+        url: `/books/get-a-book/${id}`,
+      }),
+    }),
+    updateBook: builder.mutation<IBookResponse, updateForm>({
+      query: ({ id, data }) => ({
+        url: `/books/update-book/${id}`,
+        method: "PATCH",
+        body: data,
+      }),
+    }),
   }),
 });
 
@@ -44,4 +61,6 @@ export const {
   useMyBookQuery,
   useAddBookMutation,
   useDeleteBookMutation,
+  useGetSingleBookQuery,
+  useUpdateBookMutation,
 } = bookApi;
