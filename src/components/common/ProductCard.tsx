@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { IBook } from "../../types/globalTypes";
 import Swal from "sweetalert2";
 import { useDeleteBookMutation } from "../../redux/features/books/bookApi";
@@ -75,13 +75,15 @@ const ProductCard = ({ book }: ProductCardProps) => {
 
   return (
     <div key={_id} className="w-full md:w-1/3 lg:w-1/4 xl:w-1/5 p-4">
-      <a className="block relative lg:h-86 xl:h-96 rounded overflow-hidden">
-        <img
-          alt="ecommerce"
-          className="object-cover w-full h-full block"
-          src={imgUrl}
-        />
-      </a>
+      <Link to={`/book-detail/${_id}`}>
+        <span className="block relative lg:h-86 xl:h-96 rounded overflow-hidden">
+          <img
+            alt="ecommerce"
+            className="object-cover w-full h-full block"
+            src={imgUrl}
+          />
+        </span>
+      </Link>
       {pathname.includes("/my-books") ? (
         <div className="mt-4 flex justify-between gap-x-2">
           <button

@@ -1,7 +1,7 @@
 import { IBookResponse, ISingleBookResponse } from "../../../types/globalTypes";
 import { api } from "../../api/apiSlice";
 
-interface uploadForm {
+interface IUploadForm {
   title: string;
   author: string;
   genre: string;
@@ -10,9 +10,16 @@ interface uploadForm {
   imgUrl: string;
 }
 
-interface updateForm {
+interface IUpdateForm {
   id: string;
-  data: uploadForm;
+  data: IUploadForm;
+}
+
+interface IAddReview {
+  id: string;
+  data: {
+    review: string;
+  };
 }
 
 const bookApi = api.injectEndpoints({
@@ -27,7 +34,7 @@ const bookApi = api.injectEndpoints({
         url: `/books/my-book?${url}`,
       }),
     }),
-    addBook: builder.mutation<IBookResponse, uploadForm>({
+    addBook: builder.mutation<IBookResponse, IUploadForm>({
       query: (data) => ({
         url: "/books/add-book",
         method: "POST",
@@ -46,12 +53,20 @@ const bookApi = api.injectEndpoints({
         url: `/books/get-a-book/${id}`,
       }),
     }),
-    updateBook: builder.mutation<IBookResponse, updateForm>({
+    updateBook: builder.mutation<IBookResponse, IUpdateForm>({
       query: ({ id, data }) => ({
         url: `/books/update-book/${id}`,
         method: "PATCH",
         body: data,
       }),
+    }),
+    addReview: builder.mutation<IBookResponse, IAddReview>({
+      query: ({ id, data }) => ({
+        url: `/books/add-review/${id}`,
+        method: "PATCH",
+        body: data,
+      }),
+      invalidatesTags: ["review"],
     }),
   }),
 });
@@ -63,4 +78,5 @@ export const {
   useDeleteBookMutation,
   useGetSingleBookQuery,
   useUpdateBookMutation,
+  useAddReviewMutation,
 } = bookApi;
