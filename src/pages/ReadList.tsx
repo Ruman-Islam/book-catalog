@@ -4,7 +4,9 @@ import { useGetReadListQuery } from "../redux/features/books/bookApi";
 import { IBook } from "../types/globalTypes";
 
 const ReadList = () => {
-  const { data, isLoading } = useGetReadListQuery("");
+  const { data, isLoading } = useGetReadListQuery("", {
+    pollingInterval: 500,
+  });
 
   if (isLoading) {
     return <Spinner />;

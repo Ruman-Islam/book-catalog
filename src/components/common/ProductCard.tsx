@@ -2,7 +2,10 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { IBook } from "../../types/globalTypes";
 import Swal from "sweetalert2";
-import { useDeleteBookMutation } from "../../redux/features/books/bookApi";
+import {
+  useDeleteBookMutation,
+  useUpdateReadListMutation,
+} from "../../redux/features/books/bookApi";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
 
@@ -19,6 +22,7 @@ const ProductCard = ({ book }: ProductCardProps) => {
     author,
     publicationDate,
     publicationYear,
+    isRead,
   } = book;
 
   const { pathname } = useLocation();
@@ -26,6 +30,8 @@ const ProductCard = ({ book }: ProductCardProps) => {
 
   const [deleteBook, { data, isLoading, isError, isSuccess, error }] =
     useDeleteBookMutation();
+
+  const [updateReadList] = useUpdateReadListMutation();
 
   const handleDelete = (id: string) => {
     Swal.fire({
@@ -43,6 +49,14 @@ const ProductCard = ({ book }: ProductCardProps) => {
         });
       }
     });
+  };
+
+  const handleUpdateReadList = (id: string) => {
+    const options = {
+      id: id,
+      data: { isRead: !isRead },
+    };
+    void updateReadList(options);
   };
 
   useEffect(() => {
@@ -97,6 +111,20 @@ const ProductCard = ({ book }: ProductCardProps) => {
             className="text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg flex-1"
           >
             Delete
+          </button>
+        </div>
+      ) : pathname.includes("/read-list") ? (
+        <div className="mt-4 flex justify-between gap-x-2">
+          {" "}
+          <button
+            onClick={() => handleUpdateReadList(_id)}
+            className={`text-white ${
+              isRead
+                ? "bg-green-500 hover:bg-green-600"
+                : "bg-yellow-500 hover:bg-yellow-600"
+            } border-0 py-2 px-8 focus:outline-none  rounded text-lg flex-1`}
+          >
+            {isRead ? "Mark as Unread" : "Mark as Read"}
           </button>
         </div>
       ) : (

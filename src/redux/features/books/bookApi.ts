@@ -58,6 +58,13 @@ interface IReadingListResponse {
   success: boolean;
 }
 
+interface IUpdateReadListData {
+  id: string;
+  data: {
+    isRead: boolean;
+  };
+}
+
 const bookApi = api.injectEndpoints({
   endpoints: (builder) => ({
     getAllBook: builder.query<IBookResponse, string>({
@@ -126,6 +133,15 @@ const bookApi = api.injectEndpoints({
         url: "/read/get-read-list",
       }),
     }),
+    updateReadList: builder.mutation<IReadingListResponse, IUpdateReadListData>(
+      {
+        query: ({ id, data }) => ({
+          url: `/read/update-read-list/${id}`,
+          method: "PATCH",
+          body: data,
+        }),
+      }
+    ),
   }),
 });
 
@@ -140,5 +156,6 @@ export const {
   useAddWishMutation,
   useGetWishListQuery,
   useAddReadMutation,
-  useGetReadListQuery
+  useGetReadListQuery,
+  useUpdateReadListMutation,
 } = bookApi;
