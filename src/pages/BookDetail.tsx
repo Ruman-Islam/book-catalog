@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import {
+  useAddReadMutation,
   useAddReviewMutation,
   useAddWishMutation,
   useGetSingleBookQuery,
@@ -21,6 +22,8 @@ const BookDetail = () => {
   });
   const [addReview] = useAddReviewMutation();
   const [addWish, { isSuccess, isError }] = useAddWishMutation();
+  const [addRead, { isSuccess: readSuccess, isError: readError }] =
+    useAddReadMutation();
 
   const handlePost = () => {
     if (!email) {
@@ -43,9 +46,13 @@ const BookDetail = () => {
     void addWish(id as string);
   };
 
+  const handleAddRead = () => {
+    void addRead(id as string);
+  };
+
   useEffect(() => {
-    if (isSuccess) {
-      toast.success("Book added to wishlist", {
+    if (isSuccess || readSuccess) {
+      toast.success("Book added successfully", {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -57,7 +64,7 @@ const BookDetail = () => {
       });
     }
 
-    if (isError) {
+    if (isError || readError) {
       toast.error("Something went wrong!", {
         position: "top-right",
         autoClose: 4000,
@@ -69,7 +76,7 @@ const BookDetail = () => {
         theme: "light",
       });
     }
-  }, [isError, isSuccess]);
+  }, [isError, isSuccess, readError, readSuccess]);
 
   if (isLoading) {
     return <Spinner />;
@@ -85,21 +92,29 @@ const BookDetail = () => {
             src={data?.data.imgUrl}
           />
           <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0 relative">
-            <button
-              onClick={handleAddWish}
-              className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 absolute right-0"
-            >
-              <svg
-                fill="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                className="w-5 h-5"
-                viewBox="0 0 24 24"
+            <div className="absolute flex items-center right-0">
+              <button
+                onClick={handleAddRead}
+                className=" bg-gray-200 border-0 inline-flex items-center justify-center text-gray-500 mr-2 p-2 rounded"
               >
-                <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
-              </svg>
-            </button>
+                Add to Read
+              </button>
+              <button
+                onClick={handleAddWish}
+                className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500"
+              >
+                <svg
+                  fill="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  className="w-5 h-5"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+                </svg>
+              </button>
+            </div>
             <h2 className="text-sm title-font text-gray-500 tracking-widest">
               {data?.data?.genre}
             </h2>

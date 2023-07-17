@@ -99,6 +99,12 @@ const bookApi = api.injectEndpoints({
         url: "/wish/get-wish-list",
       }),
     }),
+    addRead: builder.mutation<IBookResponse, string>({
+      query: (id) => ({
+        url: `/read/add-read/${id}`,
+        method: "PUT",
+      }),
+    }),
   }),
 });
 
@@ -112,4 +118,5 @@ export const {
   useAddReviewMutation,
   useAddWishMutation,
   useGetWishListQuery,
+  useAddReadMutation,
 } = bookApi;
