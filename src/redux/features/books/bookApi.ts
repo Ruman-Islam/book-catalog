@@ -68,6 +68,12 @@ const bookApi = api.injectEndpoints({
       }),
       invalidatesTags: ["review"],
     }),
+    addWish: builder.mutation<IBookResponse, string>({
+      query: (id) => ({
+        url: `/wish/add-wish/${id}`,
+        method: "PUT",
+      }),
+    }),
   }),
 });
 
@@ -79,4 +85,5 @@ export const {
   useGetSingleBookQuery,
   useUpdateBookMutation,
   useAddReviewMutation,
+  useAddWishMutation,
 } = bookApi;

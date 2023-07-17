@@ -1,12 +1,14 @@
 import { useParams } from "react-router-dom";
 import {
   useAddReviewMutation,
+  useAddWishMutation,
   useGetSingleBookQuery,
 } from "../redux/features/books/bookApi";
 import Spinner from "../components/common/Spinner";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAppSelector } from "../redux/hook";
 import Swal from "sweetalert2";
+import { toast } from "react-toastify";
 
 const BookDetail = () => {
   const { id } = useParams();
@@ -18,6 +20,7 @@ const BookDetail = () => {
     pollingInterval: 500,
   });
   const [addReview] = useAddReviewMutation();
+  const [addWish, { isSuccess, isError }] = useAddWishMutation();
 
   const handlePost = () => {
     if (!email) {
@@ -25,13 +28,48 @@ const BookDetail = () => {
       return Swal.fire("Unauthorized", "You have to login first", "error");
     }
 
+    if (review === "") {
+      return Swal.fire("Empty", "Empty review", "error");
+    }
     const options = {
       id: id as string,
       data: { review: review },
     };
-    setReview("");
     void addReview(options);
+    setReview("");
   };
+
+  const handleAddWish = () => {
+    void addWish(id as string);
+  };
+
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success("Book added to wishlist", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
+
+    if (isError) {
+      toast.error("Something went wrong!", {
+        position: "top-right",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
+  }, [isError, isSuccess]);
 
   if (isLoading) {
     return <Spinner />;
@@ -47,7 +85,10 @@ const BookDetail = () => {
             src={data?.data.imgUrl}
           />
           <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0 relative">
-            <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 absolute right-0">
+            <button
+              onClick={handleAddWish}
+              className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 absolute right-0"
+            >
               <svg
                 fill="currentColor"
                 strokeLinecap="round"
