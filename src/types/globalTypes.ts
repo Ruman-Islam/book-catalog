@@ -8,6 +8,7 @@ export interface IBook {
   publicationYear: string;
   imgUrl: string;
   email: string;
+  isRead?: boolean;
   reviews: [];
   __v: string;
   createdAt: string;

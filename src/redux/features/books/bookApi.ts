@@ -42,6 +42,22 @@ interface IWishListResponse {
   success: boolean;
 }
 
+interface IReadingListResponse {
+  data: {
+    email: string;
+    readingList: IBook[];
+    createdAt: string;
+    updatedAt: string;
+    _id: string;
+    id: string;
+    __v: string;
+  };
+  message: string;
+  meta: null;
+  statusCode: number;
+  success: boolean;
+}
+
 const bookApi = api.injectEndpoints({
   endpoints: (builder) => ({
     getAllBook: builder.query<IBookResponse, string>({
@@ -105,6 +121,11 @@ const bookApi = api.injectEndpoints({
         method: "PUT",
       }),
     }),
+    getReadList: builder.query<IReadingListResponse, string>({
+      query: () => ({
+        url: "/read/get-read-list",
+      }),
+    }),
   }),
 });
 
@@ -119,4 +140,5 @@ export const {
   useAddWishMutation,
   useGetWishListQuery,
   useAddReadMutation,
+  useGetReadListQuery
 } = bookApi;

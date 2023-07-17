@@ -39,6 +39,11 @@ const Navbar = () => {
               <span className="mr-5 hover:text-white">Wish List</span>
             </Link>
           )}
+          {email && (
+            <Link to="/read-list">
+              <span className="mr-5 hover:text-white">Read List</span>
+            </Link>
+          )}
         </nav>
         {email ? (
           <button
