@@ -1,4 +1,8 @@
-import { IBookResponse, ISingleBookResponse } from "../../../types/globalTypes";
+import {
+  IBook,
+  IBookResponse,
+  ISingleBookResponse,
+} from "../../../types/globalTypes";
 import { api } from "../../api/apiSlice";
 
 interface IUploadForm {
@@ -20,6 +24,22 @@ interface IAddReview {
   data: {
     review: string;
   };
+}
+
+interface IWishListResponse {
+  data: {
+    email: string;
+    wishList: IBook[];
+    createdAt: string;
+    updatedAt: string;
+    _id: string;
+    id: string;
+    __v: string;
+  };
+  message: string;
+  meta: null;
+  statusCode: number;
+  success: boolean;
 }
 
 const bookApi = api.injectEndpoints({
@@ -74,6 +94,11 @@ const bookApi = api.injectEndpoints({
         method: "PUT",
       }),
     }),
+    getWishList: builder.query<IWishListResponse, string>({
+      query: () => ({
+        url: "/wish/get-wish-list",
+      }),
+    }),
   }),
 });
 
@@ -86,4 +111,5 @@ export const {
   useUpdateBookMutation,
   useAddReviewMutation,
   useAddWishMutation,
+  useGetWishListQuery,
 } = bookApi;
